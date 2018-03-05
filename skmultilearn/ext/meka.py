@@ -165,8 +165,6 @@ class Meka(MLClassifierBase):
             fp.close()
             with open(classifier_dump_file.name, 'rb') as fp:
                 self.classifier_dump = fp.read()
-        finally:
-            #self.remove_temporary_files([train_arff, classifier_dump_file])
 
         return self
 
