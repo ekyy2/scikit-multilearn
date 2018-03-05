@@ -150,7 +150,7 @@ class Meka(MLClassifierBase):
         classifier_dump_file = tempfile.NamedTemporaryFile(delete=False)
 
         try:
-            with open(train_arff.name + '.arff', 'w') as fp:
+            with os.fdopen(train_arff.name + '.arff', 'w') as fp:
                 fp.write(self.train_data_)
 
             input_args = [
@@ -162,7 +162,7 @@ class Meka(MLClassifierBase):
 
             self.run_meka_command(input_args)
             self.classifier_dump = None
-            with open(classifier_dump_file.name, 'rb') as fp:
+            with os.fdopen(classifier_dump_file.name, 'rb') as fp:
                 self.classifier_dump = fp.read()
         finally:
             fp.close()
