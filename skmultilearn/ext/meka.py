@@ -162,10 +162,8 @@ class Meka(MLClassifierBase):
 
             self.run_meka_command(input_args)
             self.classifier_dump = None
-            fp.close()
             with os.fdopen(classifier_dump_file.name, 'rb') as fp:
                 self.classifier_dump = fp.read()
-                fp.close()
         finally:
             self.remove_temporary_files([train_arff, classifier_dump_file])
 
