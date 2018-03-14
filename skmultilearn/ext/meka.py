@@ -164,13 +164,13 @@ class Meka(MLClassifierBase):
             test_arff = tempfile.NamedTemporaryFile(delete=False)
             classifier_dump_file = tempfile.NamedTemporaryFile(delete=False)
 
-            with open(train_arff.name + '.arff', 'wb') as fp:
+            with open(train_arff.name + '.arff', 'w') as fp:
                 fp.write(self.train_data_)
 
-            with open(classifier_dump_file.name, 'wb') as fp:
+            with open(classifier_dump_file.name, 'w') as fp:
                 fp.write(self.classifier_dump)
 
-            with open(test_arff.name + '.arff', 'wb') as fp:
+            with open(test_arff.name + '.arff', 'w') as fp:
                 fp.write(Dataset.save_to_arff(X, sparse_y))
 
             args = [
